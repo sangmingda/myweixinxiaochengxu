@@ -15,16 +15,18 @@ Page({
     tip: '',
   },
   myName: function () {
+    var that=this;
     wx.getUserInfo({
       success: function (res) {
         mynickName= res.userInfo.nickName, //用户名        
         console.log(mynickName)
+        that.setData({
+          mynickName: res.userInfo.nickName, //用户名        
+        })
         //console.log(res.userInfo.nickName)        
       },      
-    }),
-      this.setData({
-        mynickName: mynickName, //用户名        
-      })
+    })
+      
   },
   
 
@@ -71,11 +73,13 @@ Page({
       })
       if (e.detail.value.inputShelfname.length != 0) {
         //shelfName.push(e.detail.value.inputShelfname)
+        console.log(e.detail.value.inputShelfname)
+        shelfName= e.detail.value.inputShelfname,
         this.setData({
-          shelfName: e.detail.value.inputShelfname+'\n',
+          shelfName: e.detail.value.inputShelfname,
         })
       }
-      console.log( tip, extraLine)
+      console.log(shelfName,tip, extraLine)
     }
   },
   formReset: function () {
@@ -102,7 +106,7 @@ Page({
   },
   copyTBL: function (e) {
     var self = firstLine + shelfName + ' ' + mynickName  + '\n' + extraLine.join('\n');
-    console.log(self, mynickName),
+    console.log(shelfName,self, mynickName),
     wx.setClipboardData({
       data: self,      
       success: function (res) {

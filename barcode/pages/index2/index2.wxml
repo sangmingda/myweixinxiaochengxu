@@ -23,7 +23,7 @@
  </view>
  <view style="display:flex;">
   <label>数量：</label>
-  <input name="inputNumber" placeholder="请输入数量！" type="number" />
+  <input name="inputNumber" placeholder="请输入数量！"  />
  </view>
   <view style="display:flex;margin-top:30px;">
   <button style="width:30%;" bindtap="scanmycode" >扫码</button>

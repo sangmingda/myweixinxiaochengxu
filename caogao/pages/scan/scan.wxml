@@ -1,0 +1,20 @@
+ <view class="table">
+    <view class="tr">
+        <view class="th">条码</view>
+            <view class="th">名称</view>
+            <view class="th">数量</view>
+
+        </view>
+     <view class="tr" wx:for="{{hang}}" wx:for-item="i">
+            <view class='td'> <input placeholder="输入条码" auto-focus/></view>
+            <view class="td"> <input placeholder="输入名称" auto-focus/></view>
+            <view class="td">  <input placeholder="输入数量" auto-focus/> </view>
+     </view>
+ </view>
+
+<view class="container">
+<view class="tblin_items_btn" bindtap="ScanCode">扫描条码</view><!-- 复制操作 --> 
+  <view class="tblin_items_btn" bindtap="copyTBL">一键复制</view><!-- 复制操作 --> 
+
+</view>
+

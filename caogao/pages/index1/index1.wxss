@@ -1,0 +1,25 @@
+/* pages/index1/index1.wxss */
+
+.table {
+    border: 0px solid darkgray;
+    font-size: 12px;
+}
+
+.tr {
+    display: flex;
+    width: 2700rpx;
+    align-items: center;
+}
+
+.td {
+    width: 400rpx;
+    height: 4rem;
+    justify-content: center;
+    text-align: center;
+    word-wrap: break-word;
+    flex-shrink: 0;
+    line-height: 4rem
+}
+.gray{
+    background:#E6FE3F9;
+}

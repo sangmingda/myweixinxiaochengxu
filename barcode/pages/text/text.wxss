@@ -1,0 +1,32 @@
+@import "../common/lib/weui.wxss";
+
+.text-box{
+  margin-bottom: 70rpx;
+  padding: 40rpx 0;
+  display: flex;
+  min-height: 300rpx;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 2em;
+}
+button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.button-sp-area{
+  margin: 0 auto;
+  width: 100%;
+    display: flex;  
+  flex-direction: row; 
+}
+
+.myform{
+  margin: 0 auto;
+  width: 80%;
+    display: flex;  
+  flex-direction: column; 
+}

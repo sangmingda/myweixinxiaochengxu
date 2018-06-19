@@ -44,6 +44,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  navigatortoscan:function(){
+    wx.navigateTo({
+      url: "../text/text"
+    })
   }
   
 })

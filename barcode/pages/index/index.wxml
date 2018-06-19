@@ -1,18 +1,21 @@
 <!--index.wxml-->
+<import src="../common/head.wxml" />
+<import src="../common/foot.wxml" />
+
 <view class="container">
-  <view class="userinfo">
+<view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+<view class="page-section page-section-spacing">
+<view class="page-body">
+<button type="primary" bindtap="navigatortoscan">欢迎参加盘点</button>
 
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-<navigator  url="../index2/index2" open-type="redirect">
-进入盘点
-</navigator>  
+</view>
+</view>
+  <template is="foot" />
 
 </view>

@@ -38,7 +38,6 @@ Page({
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -46,9 +45,18 @@ Page({
     })
   },
   navigatortoscan:function(){
-    wx.navigateTo({
-      url: "../text/text"
+
+    var pages_num = getCurrentPages()
+    if (pages_num.length==2){    
+      wx.navigateBack({
+        delta: pages_num.length
     })
+    }else{
+      wx.redirectTo({
+        url: "../text/text"
+      })
+}
+
   }
   
 })

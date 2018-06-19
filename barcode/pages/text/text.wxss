@@ -18,7 +18,7 @@ button{
   margin-bottom: 30rpx;
 }
 .button-sp-area{
-  margin: 0 auto;
+  margin: 5rpx;
   width: 100%;
     display: flex;  
   flex-direction: row; 

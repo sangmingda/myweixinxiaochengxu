@@ -28,7 +28,6 @@ Page({
       this.setData({
         time: util.formatTime(new Date()),
       });
-    console.log(time)
   },
   data: {
     text_title:'条 码 ， 名 称 ， 数 量',
@@ -136,7 +135,6 @@ Page({
       wx.scanCode({
         onlyFromCamera: true,
         success: (res) => {
-          console.log(res)
           this.setData({
             input2: res.result
           })
@@ -147,7 +145,6 @@ Page({
     var that = this;
     that.gettime()
     var self = firstLine + shelfName + ' ' + mynickName + ' ' + time + '\n' + extraLine.join('\n');
-    console.log(self),
       wx.setClipboardData({
         data: self,
         success: function (res) {

@@ -33,7 +33,7 @@
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
             <view class="weui-cell__bd">
-              <input class="weui-input" name="inputBarcode" placeholder="请输入条码！可不填" value="{{input2}}" />
+              <input bindinput='searchname' class="weui-input" name="inputBarcode" placeholder="请输入条码！可不填" value="{{input2}}" />
             </view>
           </view>
         </view>

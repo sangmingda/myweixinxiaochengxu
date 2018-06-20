@@ -7,7 +7,20 @@ Page({
     motto: '欢迎参加盘点',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    shareData: {
+      //title: '忘去一切',
+      //desc: '超市盘点小程序',
+      path: '/pages/index/index'
+    }
+  },
+  onReady:function(){
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
+  onShareAppMessage: function () {
+    return this.data.shareData
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

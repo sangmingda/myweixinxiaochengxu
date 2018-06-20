@@ -11,6 +11,7 @@ var input4 = '';
 
 var mynickName = '操作员：';
 var time = '';
+var DataList={};
 
 var util = require('../../utils/util.js');  
 
@@ -18,6 +19,21 @@ Page({
   onReady: function () {
     var that = this;
     that.myName()
+    DataList=util.DataList()
+    //console.log(DataList)
+    wx.showShareMenu({
+      withShareTicket:true
+    })
+
+  },
+  searchname: function (event){
+    for (var i = 0, len = DataList.length; i < len; i++) {
+      if (event.detail.value == DataList[i].id) {
+        this.setData({
+          input3:DataList[i].name
+        })
+      }
+    }
   },
   onPullDownRefresh: function () {
     var that = this;
@@ -29,12 +45,21 @@ Page({
         time: util.formatTime(new Date()),
       });
   },
+
   data: {
     text_title:'条 码 ， 名 称 ， 数 量',
     text0: firstLine,
     text1: secondLine,
     tip: '',
     time: '',
+    shareData: {
+      //title: '忘去一切',
+     // desc: '超市盘点小程序',
+      path: '/pages/index/index'
+    }
+  },
+  onShareAppMessage: function () {
+    return this.data.shareData
   },
   onLoad: function () {
     var that = this;
@@ -138,8 +163,17 @@ Page({
           this.setData({
             input2: res.result
           })
+          for (var i = 0, len = DataList.length; i < len; i++) {
+            if (res.result == DataList[i].id) {
+              this.setData({
+                input3: DataList[i].name
+              })
+            }
+          }
+
         }
       })
+      
   },
   copyTBL: function (e) {
     var that = this;
@@ -154,5 +188,5 @@ Page({
           })
         }
       })
-  }
+  },
 })

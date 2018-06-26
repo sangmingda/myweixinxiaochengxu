@@ -12,6 +12,8 @@
   </view>
 <view class="page-section page-section-spacing">
 <view class="page-body">
+<button type="default" bindtap="showtip">无条码商品标准名称</button>
+<button type="default" bindtap="showhelp">操作指南</button>
 <button type="primary" bindtap="navigatortoscan">欢迎参加盘点</button>
 
 </view>

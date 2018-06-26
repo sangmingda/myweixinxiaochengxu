@@ -70,6 +70,36 @@ Page({
       })
 }
 
+  },
+  showtip:function(){
+    var content = '海报纸\r\n黑卡纸\r\n4号信封\r\n5号航空信封\r\n7号信封\r\n9号信封\r\n实验报告纸\r\n信纸\r\n小文稿纸\r\n包装绳\r\n封箱带\r\n大购物袋\r\n3M口罩（两个）'
+    wx.showModal({
+      title: '无条码商品标准名称',
+      content: content,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else {
+          console.log('用户点击取消')
+        }
+
+      }
+    })
+  },
+  showhelp: function () {
+    var content = '需输入4个数字以上的条码\r\n或输入1个字符以上的名称\r\n等待1.5秒后\r\n开始自动查找货品名称\r\n结果不多于6个时\r\n弹出选择框\r\n'
+    wx.showModal({
+      title: '操作指南',
+      content: content,
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else {
+          console.log('用户点击取消')
+        }
+
+      }
+    })
   }
   
 })

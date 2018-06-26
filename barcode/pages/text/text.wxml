@@ -8,75 +8,80 @@
     <view wx:if="{{desc}}" class="page-head-desc">{{desc}}</view>
   </view>
 
-  <view class="page-body">
-    <view class="page-section page-section-spacing">
-      <view class="text-box" scroll-y="true" scroll-top="{{scrollTop}}">
-    <text selectable='true'>{{text1}}</text>
-    <text selectable='true'>\n\n</text>
+  <view class="page-body" >
+    <view class="page-section page-section-spacing" >
+
+      <view  class="zuoyou">
+        <view style="flex:1;" class="text-box" >
+          <text class="left">{{hang}}</text>
+        </view>
+        <scroll-view  style="flex:7;" class="text-box" scroll-x="true" >
+          <text class="right" selectable='true'>{{text1}}</text>
+        </scroll-view>
       </view>
     </view>
   </view>
 
 
-<form class="myform" bindsubmit="formBindsubmit" bindreset="formReset"style="width:100%">
-      <view class="page-section">
-        <view class="page-section-title">柜名</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input class="weui-input" name="inputShelfname" placeholder="请输入柜名！可不填" value="{{input1}}" />
-            </view>
+  <form class="myform" bindsubmit="formBindsubmit" bindreset="formReset" style="width:100%">
+    <view class="page-section">
+      <view class="page-section-title">柜名</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="inputShelfname" placeholder="请输入柜名！可不填" value="{{input1}}" />
           </view>
         </view>
-
-                <view class="page-section-title">条码</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input bindinput='searchname' class="weui-input" name="inputBarcode" placeholder="请输入条码！可不填" value="{{input2}}" />
-            </view>
-          </view>
-        </view>
-
-        <view class="page-section-title">名称</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input class="weui-input" name="inputName" placeholder="请输入名称！可不填" value="{{input3}}" />
-            </view>
-          </view>
-        </view>
-
-        <view class="page-section-title">数量</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd">
-              <input class="weui-input"  name="inputNumber" placeholder="请输入数量！没有请填0" value="{{input4}}" />
-            </view>
-          </view>
-        </view>
-
       </view>
 
- <view class="button-sp-area">
-   <button type="primary" plain="true" style="width:25%;" bindtap="scanmycode" >扫码</button>
-  <button type="primary" plain="true" style="width:25%;" formType="submit" >确定</button>
-  <button type="primary" plain="true" style="width:25%;" bindtap="copyTBL" >复制</button>
- </view>
- <view class="button-sp-area">
-  <button type="default" plain="true" style="width:22%" formType="reset" >清框</button>
-  <button type="warn" plain="true" style="width:22%" bindtap="removeLine" >删行</button>
-  <button type="warn" plain="true" style="width:22%;" bindtap="clearall" >重置</button>
-  <button type="default" plain="true" style="width:22%" bindtap="comeback" >返回</button>
- </view>
- </form>
+      <view class="page-section-title">条码</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input bindinput='search2' class="weui-input" name="inputBarcode" placeholder="请输入条码！可不填" value="{{input2}}" />
+          </view>
+        </view>
+      </view>
 
- <view>{{tip}}</view>
+      <view class="page-section-title">名称</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input bindinput='search3' class="weui-input" name="inputName" placeholder="请输入名称！可不填" value="{{input3}}" />
+          </view>
+        </view>
+      </view>
 
-    <view style="text-align:center;color: lightgray;" selectable='true'>当前时间是{{time}}</view>
-    <view style="text-align:center;color: lightgray;" selectable='true'>返回或者退出页面可能会丢失数据</view>
+      <view class="page-section-title">数量</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="inputNumber" placeholder="请输入数量！没有请填0" value="{{input4}}" />
+          </view>
+        </view>
+      </view>
 
-      <template is="foot" />
+    </view>
+
+    <view class="button-sp-area">
+      <button type="primary" plain="true" style="width:25%;" bindtap="scanmycode">扫码</button>
+      <button type="primary" plain="true" style="width:25%;" formType="submit">确定</button>
+      <button type="primary" plain="true" style="width:25%;" bindtap="copyTBL">复制</button>
+    </view>
+    <view class="button-sp-area">
+      <button type="default" plain="true" style="width:22%" formType="reset">清框</button>
+      <button type="warn" plain="true" style="width:22%" bindtap="removeLine">删行</button>
+      <button type="warn" plain="true" style="width:22%;" bindtap="clearall">新单</button>
+      <button type="default" plain="true" style="width:22%" bindtap="comeback">返回</button>
+    </view>
+  </form>
+
+  <view>{{tip}}</view>
+
+  <view style="text-align:center;color: lightgray;" selectable='true'>当前时间是{{time}}</view>
+  <view style="text-align:center;color: lightgray;" selectable='true'>返回或者退出页面可能会丢失数据</view>
+
+  <template is="foot" />
 
 
 </view>

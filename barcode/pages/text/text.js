@@ -23,6 +23,7 @@ var delaytime = 1500; //延时搜索数据的时长
 
 var util = require('../../utils/util.js');
 
+
 Page({
   data: {
     text_title: '条 码 ， 名 称 ， 数 量',
@@ -222,7 +223,7 @@ Page({
     }
   },
   clearall: function() {
-    var that=this
+    var that = this
     wx.showModal({
       title: '注意',
       content: '确认要清空数据吗？',
@@ -241,8 +242,7 @@ Page({
               title: '已清空数据',
               icon: 'success',
             })
-        } else if (res.cancel) {
-        }
+        } else if (res.cancel) {}
       }
     })
 
@@ -252,11 +252,16 @@ Page({
       url: "../index/index"
     })
   },
+  history: function() {
+    wx.navigateTo({
+      url: "../history/history"
+    })
+  },
   formBindsubmit: function(e) {
     if (shelfName == '无' && e.detail.value.inputShelfname.length == 0) {
       wx.showToast({
         title: '请输入柜名',
-        icon:'loading',
+        icon: 'loading',
       })
       this.setData({
         tip: '新的单据请输入柜名！',
@@ -336,8 +341,19 @@ Page({
   },
   copyTBL: function(e) {
     var that = this;
+
     that.gettime()
-    var self = firstLine + shelfName + ' ' + mynickName + ' ' + time + '\n' + extraLine.join('\n');
+
+    var timestamp = Date.parse(new Date())/1000;
+  //  console.log(timestamp)
+
+    var self = '时间：' + time + ' ' + firstLine + shelfName + ' ' + mynickName + '\n' + extraLine.join('\n');
+    wx.setStorageSync(String(timestamp), self)
+
+  // 测试用途，储存20天前的数据  
+//    console.log(new Date() - 20 * 24 * 60 * 60, new Date() - 1)
+ //   wx.setStorageSync(String(new Date() - 20 * 24 * 60 * 60), new Date() - 20 * 24 * 60 * 60)
+
     wx.setClipboardData({
       data: self,
       success: function(res) {

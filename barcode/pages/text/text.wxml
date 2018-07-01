@@ -8,14 +8,14 @@
     <view wx:if="{{desc}}" class="page-head-desc">{{desc}}</view>
   </view>
 
-  <view class="page-body" >
-    <view class="page-section page-section-spacing" >
+  <view class="page-body">
+    <view class="page-section page-section-spacing">
 
-      <view  class="zuoyou">
-        <view style="flex:1;" class="text-box" >
+      <view class="zuoyou">
+        <view style="flex:1;" class="text-box">
           <text class="left">{{hang}}</text>
         </view>
-        <scroll-view  style="flex:7;" class="text-box" scroll-x="true" >
+        <scroll-view style="flex:7;" class="text-box" scroll-x="true">
           <text class="right" selectable='true'>{{text1}}</text>
         </scroll-view>
       </view>
@@ -64,15 +64,17 @@
     </view>
 
     <view class="button-sp-area">
-      <button type="primary" plain="true" style="width:25%;" bindtap="scanmycode">扫码</button>
-      <button type="primary" plain="true" style="width:25%;" formType="submit">确定</button>
-      <button type="primary" plain="true" style="width:25%;" bindtap="copyTBL">复制</button>
+      <button type="primary" plain="true" style="width:22%;" bindtap="scanmycode">扫码</button>
+      <button type="primary" plain="true" style="width:22%;" formType="submit">确定</button>
+      <button type="primary" plain="true" style="width:22%;" bindtap="copyTBL">复制</button>
+      <button type="primary" plain="true" style="width:22%" bindtap="comeback">返回</button>
+
     </view>
     <view class="button-sp-area">
       <button type="default" plain="true" style="width:22%" formType="reset">清框</button>
       <button type="warn" plain="true" style="width:22%" bindtap="removeLine">删行</button>
       <button type="warn" plain="true" style="width:22%;" bindtap="clearall">新单</button>
-      <button type="default" plain="true" style="width:22%" bindtap="comeback">返回</button>
+      <button type="default" plain="true" style="width:22%;" bindtap="history">历史</button>
     </view>
   </form>
 

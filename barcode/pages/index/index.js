@@ -87,7 +87,7 @@ Page({
     })
   },
   showhelp: function () {
-    var content = '需输入4个数字以上的条码\r\n或输入1个字符以上的名称\r\n等待1.5秒后\r\n开始自动查找货品名称\r\n结果不多于6个时\r\n弹出选择框\r\n'
+    var content = '需输入5个数字以上的条码\r\n或输入1个字符以上的名称\r\n等待1.5秒后\r\n开始自动查找货品名称\r\n结果不多于6个时\r\n弹出选择框\r\n例如：\r\n代码输入866242是校名练习本\r\n名称输入信封可得到四种信封\r\n'
     wx.showModal({
       title: '操作指南',
       content: content,

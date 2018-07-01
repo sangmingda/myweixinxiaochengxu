@@ -1,0 +1,32 @@
+<import src="../common/head.wxml" />
+<import src="../common/foot.wxml" />
+
+
+<view class="container">
+
+  <view class="page-body">
+
+    <scroll-view class="text-box">
+      <view class="weui-cells weui-cells_after-title">
+
+        <text selectable='true'>历史记录：\n\n</text>
+        <text selectable='true'>{{showhistory}}</text>
+
+      </view>
+    </scroll-view>
+
+  </view>
+
+  <view class="btn-area">
+
+  <view class="button-sp-area">
+    <button type="default" plain="true" style="width:60%;" bindtap="clearoldhistory">清理20天前的数据</button>
+    <button type="warn" plain="true" style="width:38%;" bindtap="clearhistory">清空数据</button>
+  </view>
+  <view class="button-sp-area">
+    <button type="default" plain="true" style="width:60%;" bindtap="copyHistory">复制历史数据</button>
+    <button type="primary" plain="true" style="width:38%;" bindtap="backtotext">返回</button>
+  </view>
+  </view>
+
+</view>

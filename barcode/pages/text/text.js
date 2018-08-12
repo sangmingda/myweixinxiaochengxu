@@ -1,5 +1,5 @@
 var firstLine = '货柜号：';
-var secondLine = '条 码  ,  名 称  ,  数 量';
+var secondLine = '条 码  ，  名 称  ，  数 量 ， 价 格';
 var hangnumber = ['No'];
 
 var shelfName = '无';
@@ -13,6 +13,10 @@ var a = '';
 var k = 0;
 var re_ans2 = ['未找到条码'];
 var re_ans3 = ['未找到名称'];
+
+var totalprice = 0;
+var messageShow = [];
+
 
 var mynickName = '操作员：';
 var time = '';
@@ -291,7 +295,16 @@ Page({
 
       } else {
         //得到新的一行数据
-        extraLine.push(e.detail.value.inputBarcode + ',' + e.detail.value.inputName + ',' + e.detail.value.inputNumber),
+
+        //得到价格
+        for (var i = 0, len = DataList.length; i < len; i++) {
+          if (DataList[i].id == e.detail.value.inputBarcode) {
+            var price = DataList[i].price
+          }
+        }
+
+
+        extraLine.push(e.detail.value.inputBarcode + ',' + e.detail.value.inputName + ',' + e.detail.value.inputNumber + ',' + price),
           hangnumber.push(extraLine.length)
         this.setData({
           text1: secondLine + '\n' + extraLine.join('\n'),
@@ -344,15 +357,51 @@ Page({
 
     that.gettime()
 
-    var timestamp = Date.parse(new Date())/1000;
-  //  console.log(timestamp)
+    var timestamp = Date.parse(new Date()) / 1000;
+  //  console.log(extraLine)
 
-    var self = '时间：' + time + ' ' + firstLine + shelfName + ' ' + mynickName + '\n' + extraLine.join('\n');
+    //计算总金额
+    totalprice = 0
+   messageShow = []
+
+    for (let i = 0, len = extraLine.length; i < len; i++) {
+      var numPrice = extraLine[i].toString().split(',')
+      console.log(numPrice)
+      let endNum = Number(numPrice[2])
+      let endPrice = Number(numPrice[3])
+
+      //判断用户输入的是否为数字
+   
+      if (!(endNum>-10000)) {
+        messageShow.push(numPrice[1] + '数量错误，已跳过金额合计；')
+      }
+      else if (!(endPrice>0)) {
+        messageShow.push(numPrice[1] + '价格错误，已跳过金额合计；')
+      }
+      else{
+      totalprice =  totalprice + endNum * endPrice
+
+      }
+      console.log(endNum, endPrice, totalprice)
+    }
+    totalprice = totalprice.toFixed(2)
+    messageShow.push('合计金额是' + totalprice)
+    wx.showModal({
+      title: '合计金额',
+      content: messageShow.join('\n'),
+      success: function (res) {
+        console.log(messageShow)
+      }
+    })
+
+
+
+    var self = '时间：' + time + ' ' + firstLine + shelfName + ' 合计金额：' + totalprice + ' ' + mynickName + '\n' + extraLine.join('\n');
     wx.setStorageSync(String(timestamp), self)
 
-  // 测试用途，储存20天前的数据  
-//    console.log(new Date() - 20 * 24 * 60 * 60, new Date() - 1)
- //   wx.setStorageSync(String(new Date() - 20 * 24 * 60 * 60), new Date() - 20 * 24 * 60 * 60)
+    // 测试用途，储存20天前的数据  
+    //    console.log(new Date() - 20 * 24 * 60 * 60, new Date() - 1)
+    //   wx.setStorageSync(String(new Date() - 20 * 24 * 60 * 60), new Date() - 20 * 24 * 60 * 60)
 
     wx.setClipboardData({
       data: self,

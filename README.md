@@ -1,4 +1,4 @@
-# myweixinxiaochengxu
+# wangquyiqie
 我的微信小程序“忘去一切”
 
 功能：
